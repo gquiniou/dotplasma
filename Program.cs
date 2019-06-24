@@ -7,9 +7,9 @@ namespace dotplasma
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Worldz!");
             for (int i =0; i < 10; i++)
                 new Plasma(2048,2048,i);
+            Console.WriteLine("done!");
         }
     }
 
@@ -36,7 +36,8 @@ namespace dotplasma
 
 			calculate(r);
 			draw();
-			saveAs("output/"+"mquoi"+nb+".png");
+
+			saveAs("output/"+"malgo4_"+nb+".png");
 		}
 
 		public void saveAs(String filename) {
@@ -76,16 +77,17 @@ namespace dotplasma
 			map[r.Left, r.Top + h2] = (map[r.Left, r.Top] + map[r.Left, r.Bottom]) / 2;
 			//z = rand.Next(w2 / 4);
 			map[r.Right, r.Top + h2] = (map[r.Right, r.Top] + map[r.Right, r.Bottom]) / 2;
-			//z = rand.Next(w2 / 2);
+			z = rand.Next(w2 / 2);
 			
-			map[r.Left + w2, r.Top + h2] = (map[r.Left, r.Top] + map[r.Right, r.Top] + map[r.Left, r.Bottom] + map[r.Right, r.Bottom]) /4  ;
+			//Algorythm4 
+			map[r.Left + w2, r.Top + h2] = (map[r.Left, r.Top] + map[r.Right, r.Top] + map[r.Left, r.Bottom] + map[r.Right, r.Bottom]) /4 +z/3 ;
 		
 			//keep5
 			//map[r.Left + w2, r.Top + h2] = rand.Next(256);
 		
-		//keep6
-			if (rand.Next(10) >= 9)
-			map[r.Left + w2, r.Top + h2] = rand.Next(256);
+		//Algorythm1
+			//if (rand.Next(10) >=9)
+			//map[r.Left + w2, r.Top + h2] = rand.Next(256);
 		
 			calculate(new Rectangle(r.Left, r.Top, w2, h2));
 			calculate(new Rectangle(r.Left, r.Top + h2, w2, h2));
